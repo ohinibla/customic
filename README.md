@@ -4,7 +4,7 @@ This project provides a simple REST API for generating and managing t-shirt mock
 It includes endpoints for authentication, mockup generation, task status tracking, and listing all created mockups.  
 The API is built with **Django** and **Django REST Framework**, and uses **Celery** and **Redis** for asynchronous task processing.
 
-(.http file included — working demo available at [https://webapp.albiniho.com:8443](http://127.0.0.1:8000/api-auth/login/?next=/api/v1/mockups/generate/))
+(.http file included — working demo available at [https://webapp.albiniho.com:8443](https://webapp.albiniho.com:8443/api-auth/login/?next=/api/v1/mockups/generate/))
 
 ## Prerequisites
 
@@ -65,4 +65,5 @@ curl -s -X GET http://localhost:8000/api/v1/mockups/ \
      -H "Accept: application/json" \
      -H "Authorization: Bearer $ACCESS_TOKEN"
 ```
+
 
