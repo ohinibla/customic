@@ -1,0 +1,18 @@
+[project]
+name = "customic"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "celery>=5.5.3",
+    "django-extensions>=4.1",
+    "django-filter>=25.2",
+    "djangorestframework>=3.16.1",
+    "djangorestframework-simplejwt>=5.5.1",
+    "drf-spectacular[sidecar]>=0.29.0",
+    "ipython>=9.6.0",
+    "pillow>=12.0.0",
+    "redis[hiredis]>=7.0.1",
+    "werkzeug>=3.1.3",
+]

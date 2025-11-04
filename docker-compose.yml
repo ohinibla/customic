@@ -1,0 +1,42 @@
+services:
+  django:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: django
+    volumes:
+      - .:/usr/app
+    command: ["/bin/bash", "/usr/app/entrypoint.sh"]
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+    ports:
+      - "8000:8000"
+    networks:
+      - customic
+    restart: on-failure
+
+  redis:
+    image: redis:latest
+    command: ["redis-server", "--port", "6379"]
+    ports:
+      - 6379:6379
+    networks:
+      - customic
+    restart: on-failure
+
+  celery:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: celery
+    working_dir: /usr/app/customic
+    command: ["celery", "-A", "customic", "worker", "-l", "INFO"]
+    depends_on:
+        - redis
+    networks:
+      - customic
+    
+networks:
+  customic:
+    driver: bridge

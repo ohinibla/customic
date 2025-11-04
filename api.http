@@ -1,0 +1,32 @@
+### authenticate
+
+POST localhost:8000/api/token/
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "rasmus"
+}
+
+### generate_mockup
+
+POST localhost:8000/api/v1/mockups/generate/
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{authenticate.response.body.access}}
+
+{
+  "text": "new_text"
+}
+
+### 
+
+GET localhost:8000/api/v1/tasks/{{generate_mockup.response.body.task_id}}/
+Accept: application/json
+Authorization: Bearer {{authenticate.response.body.access}}
+
+### 
+
+GET localhost:8000/api/v1/mockups/
+Accept: application/json
+Authorization: Bearer {{authenticate.response.body.access}}
